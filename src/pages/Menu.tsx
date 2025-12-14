@@ -92,7 +92,7 @@ const Menu = () => {
               passion. Pair with our freshly baked goods for the perfect experience.
             </p>
             <Button variant="outline" asChild>
-              <a href="/menu.pdf" download="Enso-Cafe-Menu.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/menu.pdf" target="_blank" rel="noopener noreferrer">
                 <FileText className="h-4 w-4" />
                 Download Full Menu (PDF)
               </a>
