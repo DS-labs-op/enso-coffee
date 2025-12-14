@@ -68,15 +68,17 @@ const Location = () => {
             </div>
 
             <a
-              href="https://maps.google.com/?q=Enso+Coffee+Katargam+Surat"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="hero" size="lg">
-                <Navigation className="h-4 w-4" />
-                Get Directions
-              </Button>
-            </a>
+  href="https://maps.google.com/?q=Enso+Coffee+Katargam+Surat"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block mt-8"
+>
+  <Button variant="hero" size="lg">
+    <Navigation className="h-4 w-4" />
+    Get Directions
+  </Button>
+</a>
+
           </div>
 
           {/* Map */}
