@@ -218,11 +218,6 @@ const Contact = () => {
                 </a>
               </div>
 
-              {/* Map */}
-              <div className="h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-                
-              </div>
-
               <a
                 href="https://maps.google.com/?q=Enso+Coffee+Katargam+Surat"
                 target="_blank"
