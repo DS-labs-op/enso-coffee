@@ -11,7 +11,7 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Enso Coffee café interior with warm lighting, wooden furniture, and espresso bar"
-          className="max-w-full h-auto"
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 via-foreground/40 to-foreground/70" />
       </div>
