@@ -88,10 +88,7 @@ const Header = () => {
               </Link>
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-border">
-              <a href="tel:+918128955751" className="flex items-center gap-2 text-muted-foreground">
-                <Phone className="h-4 w-4" />
-                <span>+91 81289 55751</span>
-              </a>
+              
               <a
                 href="https://maps.google.com/?q=Enso+Coffee+Katargam+Surat"
                 target="_blank"
