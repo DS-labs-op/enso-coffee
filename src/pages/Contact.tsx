@@ -6,12 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Instagram, Send } from "lucide-react";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -20,16 +17,12 @@ const Contact = () => {
     visitDate: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+    const phoneNumber = "918155033301"; // Cafe WhatsApp number (no +, no spaces)
 
-  const phoneNumber = "918155033301"; // cafe WhatsApp number
-
-  const message = `
+    const message = `
 Hello Enso Coffee 👋
 
 Name: ${formData.name}
@@ -39,26 +32,13 @@ Visit Date: ${formData.visitDate || "Not specified"}
 
 Message:
 ${formData.message}
-  `;
+    `;
 
-  const encodedMessage = encodeURIComponent(message);
+    const whatsappURL =
+      "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-window.location.href = whatsappURL;
-
-  setFormData({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-    visitDate: "",
-  });
-};
-
-
-    setFormData({ name: "", phone: "", email: "", message: "", visitDate: "" });
-    setIsSubmitting(false);
+    // Redirect (reliable, not blocked)
+    window.location.href = whatsappURL;
   };
 
   return (
@@ -67,7 +47,7 @@ window.location.href = whatsappURL;
         <title>Contact | Enso Coffee - Get in Touch</title>
         <meta
           name="description"
-          content="Contact Enso Coffee in Katargam, Surat. Call us, send a message, or visit us at Sunday Hub. Open daily 8:30 AM – 11:30 PM."
+          content="Contact Enso Coffee in Katargam, Surat. Call us, send a message via WhatsApp, or visit us at Sunday Hub."
         />
       </Helmet>
 
@@ -80,18 +60,18 @@ window.location.href = whatsappURL;
             <span className="text-accent font-medium text-sm uppercase tracking-wider">
               Contact Us
             </span>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mt-2 mb-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold mt-2 mb-4">
               Get in Touch
             </h1>
             <p className="text-muted-foreground">
-              Have a question, feedback, or just want to say hi? We'd love to hear from you.
+              Have a question or want to plan a visit? Message us on WhatsApp.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Form */}
             <div className="bg-card p-6 md:p-8 rounded-xl shadow-lg shadow-black/10">
-              <h2 className="font-serif text-2xl font-bold text-foreground mb-6">
+              <h2 className="font-serif text-2xl font-bold mb-6">
                 Send Us a Message
               </h2>
 
@@ -103,16 +83,21 @@ window.location.href = whatsappURL;
                       id="name"
                       required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                     />
                   </div>
+
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone *</Label>
                     <Input
                       id="phone"
                       required
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                     />
                   </div>
                 </div>
@@ -122,7 +107,9 @@ window.location.href = whatsappURL;
                   <Input
                     id="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                   />
                 </div>
 
@@ -132,7 +119,12 @@ window.location.href = whatsappURL;
                     id="visitDate"
                     type="date"
                     value={formData.visitDate}
-                    onChange={(e) => setFormData({ ...formData, visitDate: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        visitDate: e.target.value,
+                      })
+                    }
                   />
                 </div>
 
@@ -143,13 +135,15 @@ window.location.href = whatsappURL;
                     required
                     rows={4}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" variant="hero" size="lg" className="w-full">
                   <Send className="h-4 w-4" />
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  Send via WhatsApp
                 </Button>
               </form>
             </div>
@@ -157,46 +151,43 @@ window.location.href = whatsappURL;
             {/* Contact Info */}
             <div className="space-y-10">
               <div className="grid sm:grid-cols-2 gap-4">
-                {/* Phone */}
                 <a
                   href="tel:+918155033301"
-                  className="bg-card p-5 rounded-xl shadow-lg shadow-black/10 hover:shadow-xl transition-shadow"
+                  className="bg-card p-5 rounded-xl shadow-lg shadow-black/10"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <Phone className="h-5 w-5 text-accent" />
-                    </div>
+                    <Phone className="h-5 w-5 text-accent" />
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase">Phone</p>
+                      <p className="text-xs uppercase text-muted-foreground">
+                        Phone
+                      </p>
                       <p className="font-semibold">+91 8155033301</p>
                     </div>
                   </div>
                 </a>
 
-                {/* Email */}
                 <a
                   href="mailto:hello@enso.coffee"
-                  className="bg-card p-5 rounded-xl shadow-lg shadow-black/10 hover:shadow-xl transition-shadow"
+                  className="bg-card p-5 rounded-xl shadow-lg shadow-black/10"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <Mail className="h-5 w-5 text-accent" />
-                    </div>
+                    <Mail className="h-5 w-5 text-accent" />
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase">Email</p>
+                      <p className="text-xs uppercase text-muted-foreground">
+                        Email
+                      </p>
                       <p className="font-semibold">hello@enso.coffee</p>
                     </div>
                   </div>
                 </a>
 
-                {/* Address */}
-                <div className="bg-card p-5 rounded-xl shadow-lg shadow-black/10 mt-2 md:mt-3">
+                <div className="bg-card p-5 rounded-xl shadow-lg shadow-black/10">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <MapPin className="h-5 w-5 text-accent" />
-                    </div>
+                    <MapPin className="h-5 w-5 text-accent" />
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase">Address</p>
+                      <p className="text-xs uppercase text-muted-foreground">
+                        Address
+                      </p>
                       <p className="font-semibold text-sm">
                         301, Sunday Hub, near Ankur School, Katargam, Surat 395004
                       </p>
@@ -204,42 +195,37 @@ window.location.href = whatsappURL;
                   </div>
                 </div>
 
-                {/* Hours */}
                 <div className="bg-card p-5 rounded-xl shadow-lg shadow-black/10">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-accent" />
-                    </div>
+                    <Clock className="h-5 w-5 text-accent" />
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase">Hours</p>
-                      <p className="font-semibold">Daily: 8:30 AM – 11:30 PM</p>
-                      <p className="text-xs text-muted-foreground italic">
-                        May vary; check Instagram
+                      <p className="text-xs uppercase text-muted-foreground">
+                        Hours
+                      </p>
+                      <p className="font-semibold">
+                        Daily: 8:30 AM – 11:30 PM
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Social */}
-              <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <div className="flex justify-center">
                 <a
                   href="https://www.instagram.com/enso_coffee/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-card px-4 py-3 rounded-lg shadow-lg shadow-black/10 hover:shadow-xl transition-all hover:-translate-y-0.5"
+                  className="flex items-center gap-2 bg-card px-4 py-3 rounded-lg shadow-lg"
                 >
                   <Instagram className="h-5 w-5 text-accent" />
                   <span className="font-medium">@enso_coffee</span>
                 </a>
               </div>
 
-              {/* Get Directions */}
               <a
                 href="https://maps.google.com/?q=Enso+Coffee+Katargam+Surat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block mt-2"
               >
                 <Button variant="outline" className="w-full">
                   <MapPin className="h-4 w-4" />
