@@ -140,7 +140,7 @@ Contributions are what make the open-source community such an amazing place to l
 ## 👤 Author **Sahaj & Divy** - *Full-Stack Developer & Builder*
 
 * **GitHub:** [sahaj33-op](https://www.google.com/search?q=https://github.com/sahaj33-op)
-* * **GitHub:** [divyviradiya1501](https://www.google.com/search?q=https://github.com/divyviradiya1501)
+* **GitHub:** [divyviradiya1501](https://www.google.com/search?q=https://github.com/divyviradiya1501)
 * **Portfolio:** [sahaj33.vercel.app](https://sahaj33.vercel.app/)
 
 ---
