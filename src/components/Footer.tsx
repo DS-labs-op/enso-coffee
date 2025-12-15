@@ -23,15 +23,7 @@ const Footer = () => {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="https://www.facebook.com/ensocoffee"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-primary-foreground/10 rounded-full hover:bg-primary-foreground/20 transition-colors"
-                aria-label="Follow us on Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
+              
             </div>
           </div>
 
