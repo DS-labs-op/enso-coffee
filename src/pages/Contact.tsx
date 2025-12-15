@@ -45,7 +45,7 @@ ${formData.message}
 
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-  window.open(whatsappURL, "_blank");
+window.location.href = whatsappURL;
 
   setFormData({
     name: "",
