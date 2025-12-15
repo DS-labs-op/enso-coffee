@@ -143,3 +143,28 @@
     text-wrap: balance;
   }
 }
+
+/* =========================================
+   AOS layout-shift prevention (SAFE FIX)
+   ========================================= */
+
+/* Prevent transform-based layout jump on load */
+[data-aos] {
+  will-change: transform, opacity;
+}
+
+/* Ensure AOS transforms don’t affect document flow */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Respect reduced motion users */
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+

@@ -22,10 +22,11 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     AOS.init({
-      duration: 300,      // VERY FAST
+      duration: 300,
       easing: "ease-out",
       once: true,
       offset: 40,
+      disableMutationObserver: true, // ← only change
     });
   }, []);
 
