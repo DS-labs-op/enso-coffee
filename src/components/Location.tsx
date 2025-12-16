@@ -84,7 +84,7 @@ const Location = () => {
           {/* Map */}
           <div className="relative h-80 lg:h-auto min-h-[400px] rounded-xl overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.8576!2d72.8234!3d21.2125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEnso%20Coffee!5e0!3m2!1sen!2sin!4v1702561234567!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.9070568062407!2d72.82472501010311!3d21.23553388038453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f4e6ecbd6e1%3A0x1b236882f850925a!2sEnso%20Coffee!5e0!3m2!1sen!2sin!4v1765873549640!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
