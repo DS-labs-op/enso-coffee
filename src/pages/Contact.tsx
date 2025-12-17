@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const phoneNumber = "918155033301"; // Cafe WhatsApp number (no +, no spaces)
+    const phoneNumber = "918155033301";
 
     const message = `
 Hello Enso Coffee 👋
@@ -37,7 +37,6 @@ ${formData.message}
     const whatsappURL =
       "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
-    // Redirect (reliable, not blocked)
     window.location.href = whatsappURL;
   };
 
@@ -55,7 +54,6 @@ ${formData.message}
 
       <main className="pt-20 md:pt-24 pb-16 md:pb-24 min-h-screen bg-background">
         <div className="container mx-auto px-4">
-          {/* Hero */}
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 pt-8">
             <span className="text-accent font-medium text-sm uppercase tracking-wider">
               Contact Us
@@ -69,7 +67,6 @@ ${formData.message}
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Contact Form */}
             <div className="bg-card p-6 md:p-8 rounded-xl shadow-lg shadow-black/10">
               <h2 className="font-serif text-2xl font-bold mb-6">
                 Send Us a Message
@@ -93,6 +90,7 @@ ${formData.message}
                     <Label htmlFor="phone">Phone *</Label>
                     <Input
                       id="phone"
+                      type="tel"
                       required
                       value={formData.phone}
                       onChange={(e) =>
@@ -106,6 +104,7 @@ ${formData.message}
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
+                    type="email"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
@@ -148,7 +147,6 @@ ${formData.message}
               </form>
             </div>
 
-            {/* Contact Info */}
             <div className="space-y-10">
               <div className="grid sm:grid-cols-2 gap-4">
                 <a
@@ -222,8 +220,8 @@ ${formData.message}
                 </a>
               </div>
 
-              <br>
-              
+              <br />
+
               <a
                 href="https://maps.google.com/?q=Enso+Coffee+Katargam+Surat"
                 target="_blank"
